@@ -2,12 +2,14 @@
 
 import { useState, useEffect } from 'react';
 import { Search, Bell, Menu, X, CheckCircle2, ShieldAlert, CreditCard, Sun, Moon } from 'lucide-react';
-import { defaultNotifications, defaultUser } from '@/lib/mock-data/seed';
+import { defaultNotifications } from '@/lib/mock-data/seed';
 import { useUiStore } from '@/store/useUiStore';
+import { useUserStore } from '@/store/useUserStore';
 import { cn } from '@/lib/utils';
 
 export default function Header() {
   const { toggleSidebar, theme, toggleTheme, setSearchModalOpen } = useUiStore();
+  const { user } = useUserStore();
   const [notificationsOpen, setNotificationsOpen] = useState(false);
   const [unreadCount, setUnreadCount] = useState(2);
   const [notificationsList, setNotificationsList] = useState(defaultNotifications);
@@ -52,10 +54,12 @@ export default function Header() {
     }
   };
 
+  const firstName = user.name.split(' ')[0] || user.name;
+
   return (
     <header className="sticky top-0 z-20 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 px-4 lg:px-8 py-3 transition-colors">
       <div className="flex items-center justify-between gap-3">
-        {/* Left Side: Mobile Menu Button (Logo and Greeting removed on mobile) */}
+        {/* Left Side: Mobile Menu Button */}
         <div className="flex items-center gap-3 min-w-0">
           <button
             onClick={toggleSidebar}
@@ -65,10 +69,10 @@ export default function Header() {
             <Menu className="w-5 h-5" />
           </button>
 
-          {/* Desktop/Tablet Greeting (Hidden on mobile) */}
+          {/* Desktop/Tablet Greeting */}
           <div className="hidden md:block min-w-0">
             <h2 className="text-base lg:text-lg font-bold text-slate-900 dark:text-white tracking-tight truncate flex items-center gap-1.5">
-              <span>{greeting}, Peter</span>
+              <span>{greeting}, {firstName}</span>
               <span>👋</span>
             </h2>
             <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium truncate">
@@ -184,11 +188,11 @@ export default function Header() {
             )}
           </div>
 
-          {/* User Profile Avatar with shrink prevention */}
+          {/* User Profile Avatar */}
           <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden ring-2 ring-slate-200 dark:ring-slate-800 shrink-0">
             <img
-              src={defaultUser.avatar}
-              alt={defaultUser.name}
+              src={user.avatar}
+              alt={user.name}
               className="w-full h-full object-cover"
             />
           </div>

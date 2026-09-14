@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 import { useUiStore } from '@/store/useUiStore';
 import { useKycStore } from '@/store/useKycStore';
-import { defaultUser } from '@/lib/mock-data/seed';
+import { useUserStore } from '@/store/useUserStore';
 import { cn } from '@/lib/utils';
 import Logo from '@/components/ui/Logo';
 
@@ -34,6 +34,7 @@ export default function MobileNav() {
   const pathname = usePathname();
   const { sidebarOpen, setSidebarOpen, theme, toggleTheme } = useUiStore();
   const { kyc } = useKycStore();
+  const { user } = useUserStore();
 
   if (!sidebarOpen) return null;
 
@@ -101,7 +102,7 @@ export default function MobileNav() {
           </nav>
         </div>
 
-        {/* Footer: Theme Toggle & Profile Info (Zero Squeezing) */}
+        {/* Footer: Theme Toggle & Profile Info */}
         <div className="pt-4 border-t border-slate-200 dark:border-slate-800 space-y-3">
           {/* Quick Theme Switcher */}
           <button
@@ -119,17 +120,17 @@ export default function MobileNav() {
           <div className="flex items-center gap-3 p-1.5 rounded-xl">
             <div className="relative w-10 h-10 shrink-0">
               <img
-                src={defaultUser.avatar}
-                alt={defaultUser.name}
+                src={user.avatar}
+                alt={user.name}
                 className="w-full h-full rounded-full object-cover ring-2 ring-slate-200 dark:ring-slate-800"
               />
               <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 border-2 border-white dark:border-slate-950 rounded-full"></span>
             </div>
             <div className="min-w-0 flex-1">
               <p className="text-xs font-bold text-slate-900 dark:text-white truncate">
-                {defaultUser.name}
+                {user.name}
               </p>
-              <p className="text-[11px] text-slate-400 truncate">{defaultUser.accountType}</p>
+              <p className="text-[11px] text-slate-400 truncate">{user.accountType}</p>
             </div>
           </div>
         </div>

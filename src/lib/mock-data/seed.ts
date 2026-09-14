@@ -11,12 +11,12 @@ import {
 } from '@/types';
 
 export const defaultUser: UserProfile = {
-  id: 'usr_peter_udo',
-  name: 'Peter Udo',
-  email: 'peter.udo@finflow.io',
+  id: 'usr_sara_williams',
+  name: 'Sara Williams',
+  email: 'sara.williams@finflow.io',
   avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=250',
   accountType: 'Business Account',
-  businessName: 'Udo Creative & Tech Ltd',
+  businessName: 'Williams Creative & Tech Ltd',
   currency: 'NGN',
   currencySymbol: '₦',
 };
@@ -43,15 +43,15 @@ export const defaultKycStatus: KYCVerification = {
   status: 'in_progress',
   progressPercentage: 60,
   personalInfo: {
-    firstName: 'Peter',
-    lastName: 'Udo',
-    dob: '1995-08-21',
+    firstName: 'Sara',
+    lastName: 'Williams',
+    dob: '1996-04-12',
     phone: '+234 812 345 6789',
     address: '15 Victoria Island Blvd, Lagos, Nigeria',
   },
   document: {
     type: 'national_id',
-    fileName: 'nin_document_peter_udo.pdf',
+    fileName: 'nin_document_sara_williams.pdf',
     fileSize: '2.4 MB',
     uploadedAt: '2026-08-20T14:30:00Z',
   },

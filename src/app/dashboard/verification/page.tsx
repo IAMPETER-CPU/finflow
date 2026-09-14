@@ -9,13 +9,13 @@ export default function VerificationPage() {
   const { kyc, updateStep, updatePersonalInfo, updateDocument, setSelfieVerified, setKycVerified } = useKycStore();
 
   // Form states
-  const [firstName, setFirstName] = useState(kyc.personalInfo.firstName || 'Peter');
-  const [lastName, setLastName] = useState(kyc.personalInfo.lastName || 'Udo');
-  const [dob, setDob] = useState(kyc.personalInfo.dob || '1995-08-21');
+  const [firstName, setFirstName] = useState(kyc.personalInfo.firstName || 'Sara');
+  const [lastName, setLastName] = useState(kyc.personalInfo.lastName || 'Williams');
+  const [dob, setDob] = useState(kyc.personalInfo.dob || '1996-04-12');
   const [phone, setPhone] = useState(kyc.personalInfo.phone || '+234 812 345 6789');
 
   const [docType, setDocType] = useState<'national_id' | 'drivers_license' | 'passport'>('national_id');
-  const [uploadedFile, setUploadedFile] = useState<string | null>(kyc.document.fileName || 'nin_national_id_peter_udo.pdf');
+  const [uploadedFile, setUploadedFile] = useState<string | null>(kyc.document.fileName || 'nin_national_id_sara_williams.pdf');
   const [uploading, setUploading] = useState(false);
 
   // Selfie scanning simulation states
